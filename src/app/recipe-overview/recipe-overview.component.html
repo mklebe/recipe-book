@@ -1,0 +1,8 @@
+<h1>Recipe overview</h1>
+<app-notification></app-notification>
+<ul>
+    <li *ngFor="let recipe of recipeService.recipes; index as i">
+        {{recipe.name}} by {{recipe.author}} <button (click)="removeRecipe(recipe)">löschen</button>
+    </li>
+</ul>
+<app-new-recipe></app-new-recipe>
