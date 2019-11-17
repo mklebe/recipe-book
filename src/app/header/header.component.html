@@ -1,12 +1,16 @@
 <h1>Matzes Rezeptesammlung</h1>
 <ul>
     <li>
-        <a routerLink="/add">Neues Rezept</a>
+        <a class="navigation" routerLink="/add">Neues Rezept</a>
     </li>
     <li>
-        <a routerLink="/list">Rezeptliste</a>
+        <a class="navigation" routerLink="/list">Rezeptliste</a>
     </li>
     <li>
-        <a routerLink="/details">Rezept</a>
+        <a class="navigation" routerLink="/details">Rezept</a>
     </li>
+    <li class="login-item">
+        <a class="login-link" (click)="Login()">Login</a>
+    </li>
+
 </ul>

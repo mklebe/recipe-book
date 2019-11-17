@@ -3,18 +3,33 @@ ul
     list-style: none
     padding: 0
     margin: 0
+    padding: 0 16px 4px 16px
+    width: 100%
 
 a
-    background-color: #333
-    color: #eee
+    color: #ffffff
     display: block
     text-decoration: none
-    padding: 6px 10px
+    padding: 6px 15px
 
-    &:hover
-        background-color: #666
+.navigation:hover
+    box-shadow: 0 4px 0 0 #000
+    color: #000000
 
 :host
     display: flex
     align-items: center
     flex-direction: column
+    width: 100%
+
+.login-item
+    margin-left: auto
+
+.login-link
+    border: 2px solid #4caf4c
+    border-radius: 8px
+    color: #4caf4c
+
+    &:hover
+        background-color: #4caf4c
+        color: #ffffff
