@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipeOverviewComponent } from './recipe-overview/recipe-overview.component';
 import { NotificationComponent } from './notification/notification.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewRecipeComponent,
     RecipeOverviewComponent,
-    NotificationComponent
+    NotificationComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
