@@ -8,6 +8,7 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipeOverviewComponent } from './recipe-overview/recipe-overview.component';
 import { NotificationComponent } from './notification/notification.component';
 import { DetailsComponent } from './details/details.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DetailsComponent } from './details/details.component';
     NewRecipeComponent,
     RecipeOverviewComponent,
     NotificationComponent,
-    DetailsComponent
+    DetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
