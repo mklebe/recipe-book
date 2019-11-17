@@ -1,14 +1,26 @@
 <p>Füge ein neues Rezept hinzu</p>
 <form action="">
-    <label for="rezeptname">Rezeptname</label>
-    <input type="text">
-    <label for="zutat1">Zutaten 1</label>
-    <input type="text">
-    <label for="zutat2">Zutaten 2</label>
-    <input type="text">
-    <label for="zutat3">Zutaten 3</label>
-    <input type="text">
-    <label for="arbeitsschritte">Arbeitsschritte</label>
-    <input type="textarea">
+    <div class="form-row">
+        <label for="rezeptname">Rezeptname</label>
+        <input type="text">
+    </div>
+    <div class="form-row">
+        <label for="zutat1">Zutaten 1</label>
+        <input type="text">
+    </div>
+    <div class="form-row">
+        <label for="zutat2">Zutaten 2</label>
+        <input type="text">
+    </div>
+    <div class="form-row">
+        <label for="zutat3">Zutaten 3</label>
+        <input type="text">
+    </div>
+    <div class="form-row">
+        <label for="arbeitsschritte">Arbeitsschritte</label>
+        <input type="textarea">
+    </div>
+    <div class="form-row">
+        <button (click)="addRecipe()">Add new recipe</button>
+    </div>
 </form>
-<button (click)="addRecipe()">Add new recipe</button>
