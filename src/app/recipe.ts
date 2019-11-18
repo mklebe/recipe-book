@@ -1,16 +1,14 @@
 export class Recipe {
     public name: string
-    public ingredients: string[]
-    public worksteps: string[]
+    public ingredients: string
+    public worksteps: string
     public image: string
-    public author: string
     public id: string
 
-    constructor( name: string, author: string ) {
+    constructor( name: string ) {
         this.name = name
-        this.author = author
-        this.ingredients = []
-        this.worksteps = []
+        this.ingredients = ''
+        this.worksteps = ''
         this.image = ''
     }
 
@@ -19,18 +17,14 @@ export class Recipe {
     }
 
     public addIngredient( ingredient: string ) {
-        this.ingredients.push( ingredient )
+        this.ingredients = ingredient
     }
 
     public addWorkstep( workstep: string ) {
-        this.worksteps.push( workstep )
+        this.worksteps = workstep
     }
 
     public addImage( image: string ) {
         this.image = image
-    }
-
-    public save() {
-        throw new Error('Not implemented yet!')
     }
 }
