@@ -15,7 +15,11 @@ export class NewRecipeComponent implements OnInit {
   }
 
   protected addRecipe(): void {
-    const recipe = new Recipe('Brot', 'Matthias')
+    const recipe = new Recipe('Brot')
+    recipe.addIngredient('Mehl, Wasser, Salz, Olivenöl, Zucker, Hefe')
+    recipe.addWorkstep('Zutaten zusammen mischen, warten, backen')
+    recipe.addImage('https://cdn.kika.de/bernd-friends/sendungen/bilder/bild178646_v-tlarge169_w-600_zc-be147c57.jpg')
+
     this.recipeService.addRecipe( recipe )
   }
 
