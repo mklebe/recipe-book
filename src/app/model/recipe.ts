@@ -1,13 +1,15 @@
+import { Ingredient } from './ingredient'
+
 export class Recipe {
     public name: string
-    public ingredients: string
+    public ingredients: Ingredient[]
     public worksteps: string
     public image: string
     public id: string
 
-    constructor( name: string ) {
+    constructor( name: string, ingredients: Ingredient[] ) {
         this.name = name
-        this.ingredients = ''
+        this.ingredients = ingredients
         this.worksteps = ''
         this.image = ''
     }
@@ -16,7 +18,7 @@ export class Recipe {
         this.id = id
     }
 
-    public addIngredient( ingredient: string ) {
+    public addIngredient( ingredient: Ingredient[] ) {
         this.ingredients = ingredient
     }
 
