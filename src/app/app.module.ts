@@ -11,6 +11,7 @@ import { DetailsComponent } from './details/details.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RecipeTileComponent } from './recipe-tile/recipe-tile.component';
+import { IngredientComponent } from './ingredient/ingredient.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RecipeTileComponent } from './recipe-tile/recipe-tile.component';
     DetailsComponent,
     HeaderComponent,
     HomeComponent,
-    RecipeTileComponent
+    RecipeTileComponent,
+    IngredientComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
