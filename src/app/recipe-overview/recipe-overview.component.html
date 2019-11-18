@@ -1,15 +1,6 @@
 <h1>Recipe overview</h1>
 <ul>
-    <li>
-        <app-recipe-tile></app-recipe-tile>
-    </li>
-    <li>
-        <app-recipe-tile></app-recipe-tile>
-    </li>
-    <li>
-        <app-recipe-tile></app-recipe-tile>
-    </li>
-    <li>
-        <app-recipe-tile></app-recipe-tile>
+    <li *ngFor="let recipe of recipeService.recipes; index as i">
+        <app-recipe-tile [recipe]="recipe" [id]="i"></app-recipe-tile>
     </li>
 </ul>

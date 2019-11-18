@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
-import { Recipe } from '../recipe';
+import { Recipe } from '../model/recipe';
+import { Ingredient } from '../model/ingredient';
 
 @Component({
   selector: 'app-new-recipe',
@@ -15,8 +16,14 @@ export class NewRecipeComponent implements OnInit {
   }
 
   protected addRecipe(): void {
-    const recipe = new Recipe('Brot')
-    recipe.addIngredient('Mehl, Wasser, Salz, Olivenöl, Zucker, Hefe')
+    const recipe = new Recipe('Brot', [
+      new Ingredient('Mehl'),
+      new Ingredient('Wasser'),
+      new Ingredient('Salz'),
+      new Ingredient('Olivenöl'),
+      new Ingredient('Zucker'),
+      new Ingredient('Hefe')
+    ])
     recipe.addWorkstep('Zutaten zusammen mischen, warten, backen')
     recipe.addImage('https://cdn.kika.de/bernd-friends/sendungen/bilder/bild178646_v-tlarge169_w-600_zc-be147c57.jpg')
 
