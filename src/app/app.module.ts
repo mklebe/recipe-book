@@ -9,6 +9,9 @@ import { RecipeOverviewComponent } from './recipe-overview/recipe-overview.compo
 import { NotificationComponent } from './notification/notification.component';
 import { DetailsComponent } from './details/details.component';
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { RecipeTileComponent } from './recipe-tile/recipe-tile.component';
+import { IngredientComponent } from './ingredient/ingredient.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { HeaderComponent } from './header/header.component';
     RecipeOverviewComponent,
     NotificationComponent,
     DetailsComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    RecipeTileComponent,
+    IngredientComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

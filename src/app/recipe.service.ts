@@ -1,59 +1,43 @@
 import { Injectable } from '@angular/core'
-import { Recipe } from './recipe'
+import { Recipe } from './model/recipe'
 
-import { Observable, of } from 'rxjs'
 import { map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { RECIPE_LIST_MOCK } from './mock-recipe'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  private solrBaseUrl: string = 'http://localhost:8983/solr/recipe-book'
+  private apiEndpoint: string = 'http://localhost:3000/recipe'
 
-  public recipes: Recipe[] = []
+  public recipes: Recipe[] = RECIPE_LIST_MOCK
 
   constructor(
     private messageService: MessageService,
     private http: HttpClient) { }
 
   getRecipes(): void {
-    this.http.get<SolrHttpResponse>(`${this.solrBaseUrl}/select?q=*%3A*`)
+    this.http.get(`${this.apiEndpoint}`)
       .pipe(
         map((res) => {
-          return res.response.docs.map( (element) => {
-            const rec = new Recipe( element.name, element.author )
-            rec.addId( element.id )
-            return rec
-          } )
+          return {}
         }),
         tap(_ => this.log('Recipes Fetched'))
       )
-      .subscribe(( recipes ) => {
-        this.recipes = recipes
-      })
   }
 
   addRecipe( recipe: Recipe ): void {
     const header = new HttpHeaders()
     header.append('Content-Type', 'application/json')
+
+    window.console.log( recipe )
     
-    this.http.post<Recipe>(`${this.solrBaseUrl}/update?commit=true`, {
-      'add': {
-        'doc': {
-          'author': recipe.author,
-          'name': recipe.name,
-          'image': '',
-          'ingredients': '[]',
-          'worksteps': '[]',
-        }
-      }
-    },
+    this.http.post<Recipe>(`${this.apiEndpoint}`, recipe,
     {
-      headers: header,
-      withCredentials: true
+      headers: header
     })
     .subscribe(( res ) => {
       window.console.log( res )
@@ -65,14 +49,3 @@ export class RecipeService {
     this.messageService.add( message )
   }
 }
-
-interface SolrHttpResponse {
-  response: SolrResponse
-}
-
-interface SolrResponse {
-  numFound: number
-  start: number,
-  docs: Recipe[]
-}
-
