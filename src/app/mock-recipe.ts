@@ -9,7 +9,7 @@ ingredients.set('Wasser', new Ingredient('Wasser'))
 ingredients.set('Brötchen', new Ingredient('Brötchen'))
 ingredients.set('Senf', new Ingredient('Senf'))
 ingredients.set('Salat', new Ingredient('Salat'))
-ingredients.set('Nuldeln', new Ingredient('Nudeln'))
+ingredients.set('Nudeln', new Ingredient('Nudeln'))
 ingredients.set('Essig', new Ingredient('Essig'))
 ingredients.set('Chilli', new Ingredient('Chilli'))
 
