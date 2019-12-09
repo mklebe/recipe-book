@@ -5,6 +5,7 @@ import { RecipeOverviewComponent } from './recipe-overview/recipe-overview.compo
 import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
+import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'add', component: NewRecipeComponent},
   {path: 'list', component: RecipeOverviewComponent},
   {path: 'details/:id', component: DetailsComponent},
-  {path: 'ingredient', component: IngredientComponent}
+  {path: 'ingredient', component: IngredientComponent},
+  {path: 'ingredient/new', component: AddIngredientComponent}
 ]
 
 @NgModule({
