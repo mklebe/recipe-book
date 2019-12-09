@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RecipeTileComponent } from './recipe-tile/recipe-tile.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
+import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { IngredientComponent } from './ingredient/ingredient.component';
     HeaderComponent,
     HomeComponent,
     RecipeTileComponent,
-    IngredientComponent
+    IngredientComponent,
+    AddIngredientComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
