@@ -16,15 +16,13 @@ export class IngredientService {
     private messageService: MessageService
   ) { }
 
-  getAll(): Observable<Object> {
-    return this.http.get( this.restEntpoint ).pipe(
+  getAll(): Observable<Ingredient[]> {
+    return this.http.get<Ingredient[]>( this.restEntpoint ).pipe(
       tap( _ => window.console.log('new item arived'))
     )
   }
 
   addIngredient( ingredient: Ingredient ): Observable<Ingredient> {
-    window.console.log( 'Adds ingredient' )
-
     return this.http.post<Ingredient>(this.restEntpoint, ingredient)
       .pipe(
         tap( _ => this.messageService.add(`Ingredient was added!`) ),

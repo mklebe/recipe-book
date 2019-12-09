@@ -7,3 +7,9 @@
 </label>
 
 <button (click)="addIngredient()">Zutat hinzuf&uuml;gen</button>
+
+<ul>
+    <li *ngFor="let ingredient of ingredientList">
+        {{ ingredient.name }}
+    </li>
+</ul>

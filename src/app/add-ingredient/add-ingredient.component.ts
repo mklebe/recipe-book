@@ -12,11 +12,16 @@ export class AddIngredientComponent implements OnInit {
   protected name: string
   protected description: string
 
+  protected ingredientList: Ingredient[]
+
   constructor(
     private ingredientService: IngredientService
   ) { }
 
   ngOnInit() {
+    this.ingredientService.getAll().subscribe(( ingredientList ) => {
+      this.ingredientList = ingredientList
+    })
   }
 
   protected addIngredient(): void {
@@ -28,6 +33,10 @@ export class AddIngredientComponent implements OnInit {
         window.console.log( response )
         this.name = ''
         this.description = ''
+
+        this.ingredientService.getAll().subscribe( ( ingredientList ) => {
+          this.ingredientList = ingredientList
+        })
       })
   }
 
