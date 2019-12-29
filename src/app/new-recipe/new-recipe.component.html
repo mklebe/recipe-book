@@ -6,22 +6,31 @@
     </div>
     <div class="form-row">
         <label for="zutat1">Zutat 1</label>
-        <input type="text">
+        <input #inputelement type="text" (keyup)="findIngredientByQuery(inputelement.value)">
     </div>
-    <div class="form-row">
-        <label for="zutat2">Zutat 2</label>
-        <input type="text">
-    </div>
-    <div class="form-row">
-        <label for="zutat3">Zutat 3</label>
-        <input type="text">
-    </div>
-    <div class="form-row">
-        <label for="arbeitsschritte">Arbeitsschritte</label>
-        <input type="textarea">
-    </div>
+    
     <div class="form-row">
         <button mat-button (click)="addRecipe()">hinzufügen</button>
     </div>
 </form>
+
+<div *ngIf="usedIngredients.length !== 0">
+    <h2>Dein neues Rezept enthält</h2>
+    <ul>
+        <li *ngFor="let ingredient of usedIngredients">
+            {{ ingredient.name }}
+        </li>
+    </ul>
+</div>
+
+
+<ul *ngIf="foundIngredients.length > 0">
+    <li *ngFor="let ingredient of foundIngredients; index as i">
+        {{i}} {{ingredient.name}} <button (click)="addIngredient(ingredient)">hinzufügen</button>
+    </li>
+</ul>
+<div *ngIf="inputelement.value.length > 3 && foundIngredients.length === 0">
+    <h2>Leider konnten wir {{inputelement.value}} nicht finden</h2>
+    <p>Sie können gern eine <a routerLink="/ingredient/new">neue Zutat anlegen.</a></p>
+</div>
 

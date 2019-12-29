@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ingredient } from './model/ingredient';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
@@ -15,6 +15,14 @@ export class IngredientService {
     private http: HttpClient,
     private messageService: MessageService
   ) { }
+
+  findByQuery( query: string ): Observable<Ingredient[]> {
+    const params = new HttpParams()
+      .set('limit', '5')
+      .set('matcher', query)
+
+    return this.http.get<Ingredient[]>(this.restEntpoint, {params} )
+  }
 
   getAll(): Observable<Ingredient[]> {
     return this.http.get<Ingredient[]>( this.restEntpoint ).pipe(
