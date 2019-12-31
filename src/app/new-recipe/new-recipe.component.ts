@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-new-recipe',
   templateUrl: './new-recipe.component.html',
-  styleUrls: ['./new-recipe.component.styl']
+  styleUrls: ['./new-recipe.component.css']
 })
 export class NewRecipeComponent implements OnInit {
   protected foundIngredients: Ingredient[]

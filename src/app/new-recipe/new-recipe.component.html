@@ -1,36 +1,43 @@
 <p>Füge ein neues Rezept hinzu:</p>
-<form action="">
-    <div class="form-row">
-        <label for="rezeptname">Rezeptname</label>
-        <input type="text">
+<div class="recipe">
+    <div class="recipe__add">
+        <form action="">
+            <div class="form-row">
+                <label for="rezeptname">Rezeptname</label>
+                <input type="text">
+            </div>
+            <div class="form-row">
+                <label for="zutat1">Zutat 1</label>
+                <input #inputelement type="text" (keyup)="findIngredientByQuery(inputelement.value)">
+            </div>
+            
+            <div class="form-row">
+                <button mat-button (click)="addRecipe()">hinzufügen</button>
+            </div>
+        </form>
     </div>
-    <div class="form-row">
-        <label for="zutat1">Zutat 1</label>
-        <input #inputelement type="text" (keyup)="findIngredientByQuery(inputelement.value)">
-    </div>
-    
-    <div class="form-row">
-        <button mat-button (click)="addRecipe()">hinzufügen</button>
-    </div>
-</form>
+    <div class="recipe__search">
+        <div *ngIf="inputelement.value.length > 3 && foundIngredients.length === 0">
+            <h2>Leider konnten wir {{inputelement.value}} nicht finden</h2>
+            <p>Sie können gern eine <a routerLink="/ingredient/new">neue Zutat anlegen.</a></p>
+        </div>
+        <ul *ngIf="foundIngredients.length > 0">
+            <li *ngFor="let ingredient of foundIngredients; index as i">
+                {{i}} {{ingredient.name}} <button (click)="addIngredient(ingredient)">hinzufügen</button>
+            </li>
+        </ul>
 
-<div *ngIf="usedIngredients.length !== 0">
-    <h2>Dein neues Rezept enthält</h2>
-    <ul>
-        <li *ngFor="let ingredient of usedIngredients">
-            {{ ingredient.name }}
-        </li>
-    </ul>
+    </div>
+    <div class="recipe__view">
+        <div *ngIf="usedIngredients.length > 0">
+            <h2>Dein neues Rezept enthält</h2>
+            <ul>
+                <li *ngFor="let ingredient of usedIngredients">
+                    {{ ingredient.name }}
+                </li>
+            </ul>
+        </div>
+        
+        
+    </div>
 </div>
-
-
-<ul *ngIf="foundIngredients.length > 0">
-    <li *ngFor="let ingredient of foundIngredients; index as i">
-        {{i}} {{ingredient.name}} <button (click)="addIngredient(ingredient)">hinzufügen</button>
-    </li>
-</ul>
-<div *ngIf="inputelement.value.length > 3 && foundIngredients.length === 0">
-    <h2>Leider konnten wir {{inputelement.value}} nicht finden</h2>
-    <p>Sie können gern eine <a routerLink="/ingredient/new">neue Zutat anlegen.</a></p>
-</div>
-
