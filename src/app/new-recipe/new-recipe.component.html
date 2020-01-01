@@ -1,24 +1,24 @@
 <p>Füge ein neues Rezept hinzu:</p>
 <div class="recipe">
     <div class="recipe__add">
-        <form action="">
-            <div class="form-row">
-                <label for="rezeptname">Rezeptname</label>
-                <input type="text">
-            </div>
-            <div class="form-row">
-                <label for="zutat1">Zutat 1</label>
-                <input #inputelement type="text" (keyup)="findIngredientByQuery(inputelement.value)">
-            </div>
-            
-            <div class="form-row">
-                <button mat-button (click)="addRecipe()">hinzufügen</button>
-            </div>
-        </form>
+
+        <div class="form-row">
+            <label for="rezeptname">Rezeptname</label>
+            <input [(ngModel)]="recipeName" type="text">
+        </div>
+        <div class="form-row">
+            <label for="zutat1">Zutat 1</label>
+            <input [(ngModel)]="currentIngredient" type="text" (keyup)="findIngredientByQuery()">
+        </div>
+        
+        <div class="form-row">
+            <button mat-button (click)="addRecipe()">hinzufügen</button>
+        </div>
+
     </div>
     <div class="recipe__search">
-        <div *ngIf="inputelement.value.length > 3 && foundIngredients.length === 0">
-            <h2>Leider konnten wir {{inputelement.value}} nicht finden</h2>
+        <div *ngIf="currentIngredient.length > 3 && foundIngredients.length === 0">
+            <h2>Leider konnten wir {{currentIngredient}} nicht finden</h2>
             <p>Sie können gern eine <a routerLink="/ingredient/new">neue Zutat anlegen.</a></p>
         </div>
         <ul *ngIf="foundIngredients.length > 0">
@@ -30,7 +30,7 @@
     </div>
     <div class="recipe__view">
         <div *ngIf="usedIngredients.length > 0">
-            <h2>Dein neues Rezept enthält</h2>
+            <h2>{{recipeName}}</h2>
             <ul>
                 <li *ngFor="let ingredient of usedIngredients">
                     {{ ingredient.name }}
@@ -38,6 +38,6 @@
             </ul>
         </div>
         
-        
+        <button (click)="addRecipe()">Rezept abschicken</button>
     </div>
 </div>

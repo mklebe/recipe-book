@@ -1,0 +1,50 @@
+button {
+    display: flex;
+    margin-bottom: 16px;
+    padding: 5px;
+    background-color: #f4b600;
+    color:#ffffff;
+    border-color: #f4b600;
+    border-radius: 4px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+label {
+    margin-right: 16px;
+}
+
+form {
+    display: block;
+    width: 300px;
+    padding: 10px;
+}
+
+.recipe {
+    padding: 10px 16px;
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+        "add view"
+        "search search";
+}
+
+.recipe__add {
+    background-color: rgba(0,0,0, .16);
+    grid-area: add
+}
+
+.recipe__view {
+    background-color: rgba(0,0,0, .16);
+    grid-area: view;
+}
+
+.recipe__search {
+    background-color: rgba(0,0,0, .16);
+    grid-area: search;
+}
