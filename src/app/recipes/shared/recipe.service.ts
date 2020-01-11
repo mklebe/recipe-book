@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Recipe } from '../../model/recipe'
+import { Recipe } from './recipe'
 
 import { tap } from 'rxjs/operators';
 import { MessageService } from '../../shared/message.service'

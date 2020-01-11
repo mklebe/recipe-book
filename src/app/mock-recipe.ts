@@ -1,4 +1,4 @@
-import { Recipe } from './model/recipe';
+import { Recipe } from './recipes/shared/recipe';
 import { Ingredient } from './ingredients/shared/ingredient';
 
 
