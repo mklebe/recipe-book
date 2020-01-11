@@ -43,6 +43,10 @@ export class RecipeService {
     })
   }
 
+  findById(id: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.apiEndpoint}/${id}`)
+  }
+
   private log( message: string ):void {
     this.messageService.add( message )
   }
