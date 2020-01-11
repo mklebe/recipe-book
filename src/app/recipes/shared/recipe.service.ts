@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core'
-import { Recipe } from './model/recipe'
+import { Recipe } from '../../model/recipe'
 
-import { map, tap } from 'rxjs/operators';
-import { MessageService } from './message.service'
+import { tap } from 'rxjs/operators';
+import { MessageService } from '../../shared/message.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { RECIPE_LIST_MOCK } from './mock-recipe'
+import { RECIPE_LIST_MOCK } from '../../mock-recipe'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,9 @@ export class RecipeService {
     private messageService: MessageService,
     private http: HttpClient) { }
 
-  getRecipes(): void {
-    this.http.get(`${this.apiEndpoint}`)
+  getRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${this.apiEndpoint}`)
       .pipe(
-        map((res) => {
-          return {}
-        }),
         tap(_ => this.log('Recipes Fetched'))
       )
   }

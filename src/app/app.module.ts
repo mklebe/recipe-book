@@ -4,29 +4,33 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NewRecipeComponent } from './new-recipe/new-recipe.component';
-import { RecipeOverviewComponent } from './recipe-overview/recipe-overview.component';
+import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
+import { RecipeOverviewComponent } from './recipes/recipe-list/recipe-overview.component';
 import { NotificationComponent } from './notification/notification.component';
-import { DetailsComponent } from './details/details.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { RecipeTileComponent } from './recipe-tile/recipe-tile.component';
-import { IngredientComponent } from './ingredient/ingredient.component';
-import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
-import {FormsModule} from '@angular/forms'
+import { RecipeTileComponent } from './recipes/shared/recipe-tile.component';
+import { IngredientComponent } from './ingredients/ingredient/ingredient.component';
+import { IngredientNewComponent } from './ingredients/ingredient-new/ingredient-new.component';
+import {FormsModule} from '@angular/forms';
+import { IngredientListComponent } from './ingredients/ingredient-list/ingredient-list.component';
+import { RecipeComponent } from './recipes/recipe/recipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewRecipeComponent,
-    RecipeOverviewComponent,
     NotificationComponent,
-    DetailsComponent,
     HeaderComponent,
     HomeComponent,
+
+    RecipeComponent,
+    RecipeNewComponent,
+    RecipeOverviewComponent,
     RecipeTileComponent,
+
     IngredientComponent,
-    AddIngredientComponent
+    IngredientNewComponent,
+    IngredientListComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

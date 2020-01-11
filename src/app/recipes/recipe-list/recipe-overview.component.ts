@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../recipe.service';
-import { Recipe } from '../model/recipe';
+import { RecipeService } from '../shared/recipe.service';
+import { Recipe } from '../../model/recipe';
 
 
 @Component({
@@ -10,6 +10,8 @@ import { Recipe } from '../model/recipe';
 })
 export class RecipeOverviewComponent implements OnInit {
 
+  protected recipeList: Recipe[]
+
   constructor(public recipeService: RecipeService) { }
 
   ngOnInit() {
@@ -18,6 +20,10 @@ export class RecipeOverviewComponent implements OnInit {
 
   private getRecipes(): void {
     this.recipeService.getRecipes()
+      .subscribe(( recipes ) => {
+        this.recipeList = recipes
+      })
+      
   }
 
   public removeRecipe( recipe: Recipe ) {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from '../model/recipe';
+import { Recipe } from '../../model/recipe';
 
 @Component({
   selector: 'app-recipe-tile',

@@ -1,0 +1,8 @@
+<p>Show {{ ingredientList.length }} items</p>
+<ul class="ingredientList">
+    <li class="ingredientList__item" *ngFor="let ingredient of ingredientList">
+        <a routerLink="/ingredient/{{ingredient.id}}">
+            {{ ingredient.name }}
+        </a>
+    </li>
+</ul>

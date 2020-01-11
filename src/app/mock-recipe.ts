@@ -1,5 +1,5 @@
 import { Recipe } from './model/recipe';
-import { Ingredient } from './model/ingredient';
+import { Ingredient } from './ingredients/shared/ingredient';
 
 
 const ingredients = new Map<string, Ingredient>()

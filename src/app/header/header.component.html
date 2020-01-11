@@ -5,16 +5,19 @@
         <a class="navigation" routerLink="/">Home</a>
     </li>
     <li>
-        <a class="navigation" routerLink="/add">Neues Rezept</a>
+        <a class="navigation" routerLink="/recipe/add">Neues Rezept</a>
     </li>
     <li>
-        <a class="navigation" routerLink="/list">Rezeptliste</a>
+        <a class="navigation" routerLink="/recipe/list">Rezeptliste</a>
     </li>
     <li>
         <a routerLink="/ingredient/new" class="navigation">Neue Zutat</a>
     </li>
+    <li>
+        <a routerLink="/ingredient/list" class="navigation">Zutatenliste</a>
+    </li>
     <li class="login-item">
-        <a class="login-link" (click)="Login()">Login</a>
+        <a class="login-link" (click)="login()">Login</a>
     </li>
 
 </ul>

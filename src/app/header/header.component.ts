@@ -12,4 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  protected login(): void {
+    window.console.log('Login fired')
+  }
+
 }

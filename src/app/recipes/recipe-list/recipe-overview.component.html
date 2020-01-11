@@ -3,7 +3,7 @@
 <app-notification></app-notification>
 
 <ul>
-    <li *ngFor="let recipe of recipeService.recipes; index as i">
+    <li *ngFor="let recipe of recipeList; index as i">
         <app-recipe-tile [recipe]="recipe" [id]="i"></app-recipe-tile>
     </li>
 

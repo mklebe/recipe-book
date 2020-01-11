@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../recipe.service';
-import { Recipe } from '../model/recipe';
-import { Ingredient } from '../model/ingredient';
-import { IngredientService } from '../ingredient.service';
-import { tap } from 'rxjs/operators';
+import { RecipeService } from '../shared/recipe.service';
+import { Recipe } from '../../model/recipe';
+import { Ingredient } from '../../ingredients/shared/ingredient';
+import { IngredientService } from '../../ingredients/shared/ingredient.service';
 
 @Component({
-  selector: 'app-new-recipe',
-  templateUrl: './new-recipe.component.html',
-  styleUrls: ['./new-recipe.component.css']
+  selector: 'app-recipe-new',
+  templateUrl: './recipe-new.component.html',
+  styleUrls: ['./recipe-new.component.css']
 })
-export class NewRecipeComponent implements OnInit {
+export class RecipeNewComponent implements OnInit {
   protected foundIngredients: Ingredient[]
   protected usedIngredients: Ingredient[]
 
@@ -38,7 +37,7 @@ export class NewRecipeComponent implements OnInit {
 
   protected findIngredientByQuery(): void {
     if( this.currentIngredient.length > 3 ) {
-      this.ingredientService.findByQuery( this.currentIngredient )
+      this.ingredientService.findByQuery( this.currentIngredient, '20' )
         .subscribe(( items ) => {
           this.foundIngredients = items
         })
