@@ -27,9 +27,6 @@ export class IngredientService {
   findById(id: string): Observable<Ingredient> {
 
     return this.http.get<Ingredient>(`${this.restEntpoint}/${id}`)
-      .pipe(
-        tap( _ => this.messageService.add(`Ingredient with id: ${id} was fetched`) )
-      )
   }
 
   getAll(): Observable<Ingredient[]> {
