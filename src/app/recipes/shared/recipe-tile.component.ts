@@ -8,7 +8,6 @@ import { Recipe } from './recipe';
 })
 export class RecipeTileComponent implements OnInit {
   @Input() recipe: Recipe
-  @Input() id: number
 
   constructor() { }
 
