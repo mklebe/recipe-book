@@ -41,4 +41,8 @@ export class IngredientService {
         tap( _ => this.messageService.add(`Ingredient was added!`) ),
       )
   }
+
+  incrementHits( ingredient: Ingredient ): Observable<Ingredient> {
+    return this.http.patch<Ingredient>(this.restEntpoint, ingredient)
+  }
 }

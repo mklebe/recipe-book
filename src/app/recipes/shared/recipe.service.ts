@@ -43,6 +43,10 @@ export class RecipeService {
     })
   }
 
+  incrementHits( recipe: Recipe ): Observable<Recipe> {
+    return this.http.patch<Recipe>(this.apiEndpoint, recipe)
+  }
+
   findById(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.apiEndpoint}/${id}`)
   }

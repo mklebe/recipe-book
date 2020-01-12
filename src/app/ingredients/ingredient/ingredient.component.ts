@@ -22,6 +22,10 @@ export class IngredientComponent implements OnInit {
       this.ingredientService.findById( ingredientId )
         .subscribe(( ingredient ) => {
           this.ingredient = ingredient
+          this.ingredientService.incrementHits(ingredient)
+            .subscribe( ingredient => {
+              window.console.log( ingredient )
+            })
         })
     })
   }
