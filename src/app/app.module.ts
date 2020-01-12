@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
-import { RecipeOverviewComponent } from './recipes/recipe-list/recipe-overview.component';
+import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { NotificationComponent } from './notification/notification.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -25,7 +25,7 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
 
     RecipeComponent,
     RecipeNewComponent,
-    RecipeOverviewComponent,
+    RecipeListComponent,
     RecipeTileComponent,
 
     IngredientComponent,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
-import { RecipeOverviewComponent } from './recipes/recipe-list/recipe-overview.component';
+import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { HomeComponent } from './home/home.component';
 
 import { IngredientNewComponent } from './ingredients/ingredient-new/ingredient-new.component';
@@ -15,7 +15,7 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'recipe/add', component: RecipeNewComponent},
-  {path: 'recipe/list', component: RecipeOverviewComponent},
+  {path: 'recipe/list', component: RecipeListComponent},
   {path: 'recipe/:id', component: RecipeComponent},
 
   {path: 'ingredient/new', component: IngredientNewComponent},

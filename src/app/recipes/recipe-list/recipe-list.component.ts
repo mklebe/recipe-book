@@ -4,11 +4,11 @@ import { Recipe } from '../shared/recipe';
 
 
 @Component({
-  selector: 'app-recipe-overview',
-  templateUrl: './recipe-overview.component.html',
-  styleUrls: ['./recipe-overview.component.styl']
+  selector: 'app-recipe-list',
+  templateUrl: './recipe-list.component.html',
+  styleUrls: ['./recipe-list.component.styl']
 })
-export class RecipeOverviewComponent implements OnInit {
+export class RecipeListComponent implements OnInit {
 
   protected recipeList: Recipe[]
 
