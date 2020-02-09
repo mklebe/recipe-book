@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RecipeService } from '../shared/recipe.service';
-import { Recipe } from '../shared/recipe';
+import { Recipe } from 'src/app/api/models';
+import { RecipeService } from 'src/app/api/services';
+
 
 @Component({
   selector: 'app-recipe',
@@ -19,11 +20,11 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.routeService.params.subscribe( params => {
-      const ingredientId = params['id']
-      this.recipeService.findById( ingredientId )
+
+      this.recipeService.findById({id: params.id})
         .subscribe(( recipe ) => {
           this.recipe = recipe
-          this.recipeService.incrementHits( recipe )
+          this.recipeService.incrementHits({body: recipe})
             .subscribe(recipe => {
               window.console.log( recipe )
             })

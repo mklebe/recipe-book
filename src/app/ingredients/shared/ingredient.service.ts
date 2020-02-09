@@ -16,12 +16,11 @@ export class IngredientService {
     private messageService: MessageService
   ) { }
 
-  findByQuery( query: string, limit: string = '5' ): Observable<Ingredient[]> {
+  findByQuery( query: string ): Observable<Ingredient[]> {
     const params = new HttpParams()
-      .set('limit', limit)
-      .set('matcher', query)
+      .set('term', query)
 
-    return this.http.get<Ingredient[]>(this.restEntpoint, {params} )
+    return this.http.get<Ingredient[]>(`${this.restEntpoint}/searchsuggest`, {params} )
   }
 
   findById(id: string): Observable<Ingredient> {

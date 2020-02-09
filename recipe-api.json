@@ -1,0 +1,432 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Recipe Book API",
+        "description": "Documentation of REST Endpoints",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [
+        {
+            "name": "ingredient",
+            "description": ""
+        },
+        {
+            "name": "recipe",
+            "description": ""
+        }
+    ],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "Recipe": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "ingredients": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "hits": {
+                        "type": "number"
+                    },
+                    "worksteps": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name",
+                    "image",
+                    "ingredients",
+                    "hits",
+                    "worksteps"
+                ]
+            },
+            "Diet": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "Season": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "Ingredient": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "diets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Diet"
+                        }
+                    },
+                    "seasons": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Season"
+                        }
+                    },
+                    "hits": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "name",
+                    "description",
+                    "diets",
+                    "seasons",
+                    "hits"
+                ]
+            }
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "AppController_getHello",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/recipe": {
+            "post": {
+                "operationId": "RecipeController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Recipe"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "recipe"
+                ]
+            },
+            "get": {
+                "operationId": "RecipeController_findAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Recipe"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "recipe"
+                ]
+            },
+            "patch": {
+                "operationId": "incrementHits",
+                "summary": "",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Recipe"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "recipe"
+                ]
+            }
+        },
+        "/recipe/{id}": {
+            "get": {
+                "operationId": "findById",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "recipe"
+                ]
+            },
+            "put": {
+                "operationId": "RecipeController_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Recipe"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "recipe"
+                ]
+            },
+            "delete": {
+                "operationId": "RecipeController_remove",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "recipe"
+                ]
+            }
+        },
+        "/ingredient": {
+            "post": {
+                "operationId": "IngredientController_create",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingredient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingredient"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            },
+            "patch": {
+                "operationId": "IngredientController_updateHits",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingredient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingredient"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            },
+            "get": {
+                "operationId": "IngredientController_findAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Ingredient"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            }
+        },
+        "/ingredient/search": {
+            "get": {
+                "operationId": "findIngredient",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "term",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Ingredient"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            }
+        },
+        "/ingredient/{id}": {
+            "get": {
+                "operationId": "IngredientController_getById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingredient"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IngredientService } from '../shared/ingredient.service';
-import { Ingredient } from '../shared/ingredient';
+import { Ingredient } from 'src/app/api/models';
+import { IngredientService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-ingredient-list',
@@ -17,7 +17,7 @@ export class IngredientListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ingredientService.findByQuery('', '50').subscribe(( ingredientList ) => {
+    this.ingredientService.ingredientControllerFindAll().subscribe(( ingredientList ) => {
       this.ingredientList = ingredientList
     })
   }

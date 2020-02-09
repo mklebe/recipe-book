@@ -15,6 +15,7 @@ import { IngredientNewComponent } from './ingredients/ingredient-new/ingredient-
 import {FormsModule} from '@angular/forms';
 import { IngredientListComponent } from './ingredients/ingredient-list/ingredient-list.component';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
+import { ApiModule } from './api/api.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ApiModule.forRoot({rootUrl: 'http://localhost:3000'}),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../shared/recipe.service';
-import { Recipe } from '../shared/recipe';
-import { Ingredient } from '../../ingredients/shared/ingredient';
-import { IngredientService } from '../../ingredients/shared/ingredient.service';
+import { IngredientService, RecipeService } from 'src/app/api/services';
+import { Ingredient } from 'src/app/api/models';
+import { Recipe } from 'src/app/api/models'
 
 @Component({
   selector: 'app-recipe-new',
@@ -36,22 +35,23 @@ export class RecipeNewComponent implements OnInit {
   }
 
   protected findIngredientByQuery(): void {
-    if( this.currentIngredient.length > 3 ) {
-      this.ingredientService.findByQuery( this.currentIngredient, '20' )
-        .subscribe(( items ) => {
-          this.foundIngredients = items
+    if( this.currentIngredient.length >= 3 ) {
+      const currentIngredient = this.currentIngredient
+      this.ingredientService.findIngredient({term: currentIngredient})
+        .subscribe( ( ingredients ) => {
+          this.foundIngredients = ingredients
         })
     }
   }
 
   protected addRecipe(): void {
-    const recipe = new Recipe(
-        this.recipeName, 
-        this.usedIngredients)
-    recipe.addWorkstep('Zutaten zusammen mischen, warten, backen')
-    recipe.addImage('https://cdn.kika.de/bernd-friends/sendungen/bilder/bild178646_v-tlarge169_w-600_zc-be147c57.jpg')
+    // const recipe = new Recipe(
+    //     this.recipeName, 
+    //     this.usedIngredients)
+    // recipe.addWorkstep('Zutaten zusammen mischen, warten, backen')
+    // recipe.addImage('https://cdn.kika.de/bernd-friends/sendungen/bilder/bild178646_v-tlarge169_w-600_zc-be147c57.jpg')
 
-    this.recipeService.addRecipe( recipe )
+    // this.recipeService.addRecipe( recipe )
   }
 
 }
