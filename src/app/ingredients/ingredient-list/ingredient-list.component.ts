@@ -17,9 +17,10 @@ export class IngredientListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ingredientService.ingredientControllerFindAll().subscribe(( ingredientList ) => {
-      this.ingredientList = ingredientList
-    })
+    this.ingredientService.ingredientControllerFindAll()
+      .subscribe(( ingredientList ) => {
+        this.ingredientList = ingredientList
+      })
   }
 
 }
