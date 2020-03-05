@@ -19,41 +19,27 @@
     "servers": [],
     "components": {
         "schemas": {
-            "Recipe": {
+            "FileUploadDto": {
                 "type": "object",
                 "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "image": {
-                        "type": "string"
-                    },
-                    "ingredients": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "hits": {
-                        "type": "number"
-                    },
-                    "worksteps": {
-                        "type": "string"
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
                     }
                 },
                 "required": [
-                    "name",
-                    "image",
-                    "ingredients",
-                    "hits",
-                    "worksteps"
+                    "file"
                 ]
             },
             "Diet": {
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                            "Vegan",
+                            "Vegetarian"
+                        ]
                     }
                 },
                 "required": [
@@ -64,7 +50,21 @@
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December"
+                        ]
                     }
                 },
                 "required": [
@@ -74,7 +74,13 @@
             "Ingredient": {
                 "type": "object",
                 "properties": {
+                    "id": {
+                        "type": "number"
+                    },
                     "name": {
+                        "type": "string"
+                    },
+                    "slug": {
                         "type": "string"
                     },
                     "description": {
@@ -97,10 +103,46 @@
                     }
                 },
                 "required": [
+                    "id",
                     "name",
+                    "slug",
                     "description",
                     "diets",
                     "seasons",
+                    "hits"
+                ]
+            },
+            "Recipe": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "ingredients": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Ingredient"
+                        }
+                    },
+                    "hits": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "slug",
+                    "image",
+                    "ingredients",
                     "hits"
                 ]
             }
@@ -118,9 +160,36 @@
                 }
             }
         },
+        "/image/upload": {
+            "post": {
+                "operationId": "uploadImage",
+                "summary": "",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "description": "Recipe image",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FileUploadDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "image"
+                ]
+            }
+        },
         "/recipe": {
             "post": {
-                "operationId": "RecipeController_create",
+                "operationId": "addRecipe",
+                "summary": "",
                 "parameters": [],
                 "requestBody": {
                     "required": true,
@@ -171,7 +240,7 @@
                 ]
             },
             "patch": {
-                "operationId": "incrementHits",
+                "operationId": "incrementRecipeHits",
                 "summary": "",
                 "parameters": [],
                 "requestBody": {
@@ -284,7 +353,8 @@
         },
         "/ingredient": {
             "post": {
-                "operationId": "IngredientController_create",
+                "operationId": "create",
+                "summary": "",
                 "parameters": [],
                 "requestBody": {
                     "required": true,
@@ -313,7 +383,8 @@
                 ]
             },
             "patch": {
-                "operationId": "IngredientController_updateHits",
+                "operationId": "incrementIngredientHits",
+                "summary": "",
                 "parameters": [],
                 "requestBody": {
                     "required": true,
@@ -342,8 +413,18 @@
                 ]
             },
             "get": {
-                "operationId": "IngredientController_findAll",
-                "parameters": [],
+                "operationId": "findAll",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -400,7 +481,8 @@
         },
         "/ingredient/{id}": {
             "get": {
-                "operationId": "IngredientController_getById",
+                "operationId": "find",
+                "summary": "",
                 "parameters": [
                     {
                         "name": "id",

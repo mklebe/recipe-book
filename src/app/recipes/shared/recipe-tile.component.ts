@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from './recipe';
+import { Recipe } from 'src/app/api/models';
 
 @Component({
   selector: 'app-recipe-tile',
@@ -8,10 +8,13 @@ import { Recipe } from './recipe';
 })
 export class RecipeTileComponent implements OnInit {
   @Input() recipe: Recipe
+  protected recipeSlug: string
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.recipeSlug = ''+this.recipe.id
   }
 
 }

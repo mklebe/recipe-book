@@ -45,13 +45,33 @@ export class RecipeNewComponent implements OnInit {
   }
 
   protected addRecipe(): void {
-    // const recipe = new Recipe(
-    //     this.recipeName, 
-    //     this.usedIngredients)
-    // recipe.addWorkstep('Zutaten zusammen mischen, warten, backen')
-    // recipe.addImage('https://cdn.kika.de/bernd-friends/sendungen/bilder/bild178646_v-tlarge169_w-600_zc-be147c57.jpg')
+    const recipe = new CreateRecipeDto(
+        this.recipeName, 
+        this.usedIngredients)
 
-    // this.recipeService.addRecipe( recipe )
+    this.recipeService.addRecipe({body: recipe})
+      .subscribe( recipe => {
+        window.console.log( recipe )
+      })
   }
+}
+
+class CreateRecipeDto implements Recipe {
+  hits: number
+  id: number
+  image: string
+  ingredients: Ingredient[]
+  name: string
+  slug: string
+
+  constructor( name: string, ingredients: Ingredient[] ) {
+    this.name = name
+    this.id = null
+    this.image = ''
+    this.slug = null
+    this.ingredients = ingredients
+    this.hits = 0
+  }
+
 
 }

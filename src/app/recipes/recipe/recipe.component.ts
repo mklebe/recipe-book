@@ -20,11 +20,10 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.routeService.params.subscribe( params => {
-
       this.recipeService.findById({id: params.id})
         .subscribe(( recipe ) => {
           this.recipe = recipe
-          this.recipeService.incrementHits({body: recipe})
+          this.recipeService.incrementRecipeHits({body: recipe})
             .subscribe(recipe => {
               window.console.log( recipe )
             })

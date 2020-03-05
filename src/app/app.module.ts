@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { RecipeTileComponent } from './recipes/shared/recipe-tile.component';
 import { IngredientComponent } from './ingredients/ingredient/ingredient.component';
 import { IngredientNewComponent } from './ingredients/ingredient-new/ingredient-new.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { IngredientListComponent } from './ingredients/ingredient-list/ingredient-list.component';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { ApiModule } from './api/api.module';
@@ -38,7 +38,8 @@ import { ApiModule } from './api/api.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ApiModule.forRoot({rootUrl: 'http://localhost:3000'}),
+    ApiModule.forRoot({rootUrl: 'http://192.168.0.17:3000'}),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

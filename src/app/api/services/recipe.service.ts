@@ -68,22 +68,22 @@ export class RecipeService extends BaseService {
   }
 
   /**
-   * Path part for operation recipeControllerCreate
+   * Path part for operation addRecipe
    */
-  static readonly RecipeControllerCreatePath = '/recipe';
+  static readonly AddRecipePath = '/recipe';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `recipeControllerCreate()` instead.
+   * To access only the response body, use `addRecipe()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  recipeControllerCreate$Response(params: {
+  addRecipe$Response(params: {
 
     body: Recipe
   }): Observable<StrictHttpResponse<Recipe>> {
 
-    const rb = new RequestBuilder(this.rootUrl, RecipeService.RecipeControllerCreatePath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, RecipeService.AddRecipePath, 'post');
     if (params) {
 
 
@@ -102,37 +102,37 @@ export class RecipeService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `recipeControllerCreate$Response()` instead.
+   * To access the full response (for headers, for example), `addRecipe$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  recipeControllerCreate(params: {
+  addRecipe(params: {
 
     body: Recipe
   }): Observable<Recipe> {
 
-    return this.recipeControllerCreate$Response(params).pipe(
+    return this.addRecipe$Response(params).pipe(
       map((r: StrictHttpResponse<Recipe>) => r.body as Recipe)
     );
   }
 
   /**
-   * Path part for operation incrementHits
+   * Path part for operation incrementRecipeHits
    */
-  static readonly IncrementHitsPath = '/recipe';
+  static readonly IncrementRecipeHitsPath = '/recipe';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `incrementHits()` instead.
+   * To access only the response body, use `incrementRecipeHits()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incrementHits$Response(params: {
+  incrementRecipeHits$Response(params: {
 
     body: Recipe
   }): Observable<StrictHttpResponse<Recipe>> {
 
-    const rb = new RequestBuilder(this.rootUrl, RecipeService.IncrementHitsPath, 'patch');
+    const rb = new RequestBuilder(this.rootUrl, RecipeService.IncrementRecipeHitsPath, 'patch');
     if (params) {
 
 
@@ -151,16 +151,16 @@ export class RecipeService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `incrementHits$Response()` instead.
+   * To access the full response (for headers, for example), `incrementRecipeHits$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incrementHits(params: {
+  incrementRecipeHits(params: {
 
     body: Recipe
   }): Observable<Recipe> {
 
-    return this.incrementHits$Response(params).pipe(
+    return this.incrementRecipeHits$Response(params).pipe(
       map((r: StrictHttpResponse<Recipe>) => r.body as Recipe)
     );
   }

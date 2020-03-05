@@ -22,23 +22,25 @@ export class IngredientService extends BaseService {
   }
 
   /**
-   * Path part for operation ingredientControllerFindAll
+   * Path part for operation findAll
    */
-  static readonly IngredientControllerFindAllPath = '/ingredient';
+  static readonly FindAllPath = '/ingredient';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `ingredientControllerFindAll()` instead.
+   * To access only the response body, use `findAll()` instead.
    *
    * This method doesn't expect any request body.
    */
-  ingredientControllerFindAll$Response(params?: {
+  findAll$Response(params: {
+    query: number;
 
   }): Observable<StrictHttpResponse<Array<Ingredient>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, IngredientService.IngredientControllerFindAllPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, IngredientService.FindAllPath, 'get');
     if (params) {
 
+      rb.query('query', params.query);
 
     }
     return this.http.request(rb.build({
@@ -54,36 +56,37 @@ export class IngredientService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `ingredientControllerFindAll$Response()` instead.
+   * To access the full response (for headers, for example), `findAll$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  ingredientControllerFindAll(params?: {
+  findAll(params: {
+    query: number;
 
   }): Observable<Array<Ingredient>> {
 
-    return this.ingredientControllerFindAll$Response(params).pipe(
+    return this.findAll$Response(params).pipe(
       map((r: StrictHttpResponse<Array<Ingredient>>) => r.body as Array<Ingredient>)
     );
   }
 
   /**
-   * Path part for operation ingredientControllerCreate
+   * Path part for operation create
    */
-  static readonly IngredientControllerCreatePath = '/ingredient';
+  static readonly CreatePath = '/ingredient';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `ingredientControllerCreate()` instead.
+   * To access only the response body, use `create()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  ingredientControllerCreate$Response(params: {
+  create$Response(params: {
 
     body: Ingredient
   }): Observable<StrictHttpResponse<Ingredient>> {
 
-    const rb = new RequestBuilder(this.rootUrl, IngredientService.IngredientControllerCreatePath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, IngredientService.CreatePath, 'post');
     if (params) {
 
 
@@ -102,37 +105,37 @@ export class IngredientService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `ingredientControllerCreate$Response()` instead.
+   * To access the full response (for headers, for example), `create$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  ingredientControllerCreate(params: {
+  create(params: {
 
     body: Ingredient
   }): Observable<Ingredient> {
 
-    return this.ingredientControllerCreate$Response(params).pipe(
+    return this.create$Response(params).pipe(
       map((r: StrictHttpResponse<Ingredient>) => r.body as Ingredient)
     );
   }
 
   /**
-   * Path part for operation ingredientControllerUpdateHits
+   * Path part for operation incrementIngredientHits
    */
-  static readonly IngredientControllerUpdateHitsPath = '/ingredient';
+  static readonly IncrementIngredientHitsPath = '/ingredient';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `ingredientControllerUpdateHits()` instead.
+   * To access only the response body, use `incrementIngredientHits()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  ingredientControllerUpdateHits$Response(params: {
+  incrementIngredientHits$Response(params: {
 
     body: Ingredient
   }): Observable<StrictHttpResponse<Ingredient>> {
 
-    const rb = new RequestBuilder(this.rootUrl, IngredientService.IngredientControllerUpdateHitsPath, 'patch');
+    const rb = new RequestBuilder(this.rootUrl, IngredientService.IncrementIngredientHitsPath, 'patch');
     if (params) {
 
 
@@ -151,16 +154,16 @@ export class IngredientService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `ingredientControllerUpdateHits$Response()` instead.
+   * To access the full response (for headers, for example), `incrementIngredientHits$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  ingredientControllerUpdateHits(params: {
+  incrementIngredientHits(params: {
 
     body: Ingredient
   }): Observable<Ingredient> {
 
-    return this.ingredientControllerUpdateHits$Response(params).pipe(
+    return this.incrementIngredientHits$Response(params).pipe(
       map((r: StrictHttpResponse<Ingredient>) => r.body as Ingredient)
     );
   }
@@ -215,22 +218,22 @@ export class IngredientService extends BaseService {
   }
 
   /**
-   * Path part for operation ingredientControllerGetById
+   * Path part for operation find
    */
-  static readonly IngredientControllerGetByIdPath = '/ingredient/{id}';
+  static readonly FindPath = '/ingredient/{id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `ingredientControllerGetById()` instead.
+   * To access only the response body, use `find()` instead.
    *
    * This method doesn't expect any request body.
    */
-  ingredientControllerGetById$Response(params: {
+  find$Response(params: {
     id: string;
 
   }): Observable<StrictHttpResponse<Ingredient>> {
 
-    const rb = new RequestBuilder(this.rootUrl, IngredientService.IngredientControllerGetByIdPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, IngredientService.FindPath, 'get');
     if (params) {
 
       rb.path('id', params.id);
@@ -249,16 +252,16 @@ export class IngredientService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `ingredientControllerGetById$Response()` instead.
+   * To access the full response (for headers, for example), `find$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  ingredientControllerGetById(params: {
+  find(params: {
     id: string;
 
   }): Observable<Ingredient> {
 
-    return this.ingredientControllerGetById$Response(params).pipe(
+    return this.find$Response(params).pipe(
       map((r: StrictHttpResponse<Ingredient>) => r.body as Ingredient)
     );
   }

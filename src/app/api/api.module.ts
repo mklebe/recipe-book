@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { ApiService } from './services/api.service';
+import { ImageService } from './services/image.service';
 import { RecipeService } from './services/recipe.service';
 import { IngredientService } from './services/ingredient.service';
 
@@ -16,6 +17,7 @@ import { IngredientService } from './services/ingredient.service';
   declarations: [],
   providers: [
     ApiService,
+    ImageService,
     RecipeService,
     IngredientService,
     ApiConfiguration

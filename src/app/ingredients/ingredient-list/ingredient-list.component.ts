@@ -17,7 +17,7 @@ export class IngredientListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ingredientService.ingredientControllerFindAll()
+    this.ingredientService.findAll({query: 100})
       .subscribe(( ingredientList ) => {
         this.ingredientList = ingredientList
       })

@@ -1,8 +1,36 @@
-<label>Name der Zutat
-    <input [(ngModel)]="name">
-</label>
-<label>Beschreibung der Zutat
-    <input [(ngModel)]="description">
-</label>
+<form [formGroup]="ingredientForm"  (ngSubmit)="submit()">
+    <div class="form-row">
+        <label>
+            Ingredient name:
+            <input type="text" formControlName="name">
+        </label>
+    </div>
+    <div class="form-row">
+        <label>
+            Description:
+            <input type="textarea" formControlName="description">
+        </label>
+    </div>
+    <div class="form-row">
+        <label
+            formArrayName="seasons" 
+            *ngFor="let month of availableMonths; let i = index">
+            <input type="checkbox" [formControlName]="i">{{availableMonths[i].name}}
+        </label>
+    </div>
 
-<button (click)="addIngredient()">Zutat hinzuf&uuml;gen</button>
+    <div class="form-row">
+        <select formControlName="diet">
+            <option value="" disabled>Please chose diet</option>
+            <option *ngFor="let diet of diets" [ngValue]="diet">{{ diet }}</option>
+        </select>
+    </div>
+
+    <label>
+        Take a picture
+        <input (change)="imageUploaded($event.target.files)" type="file" accept="image/*" capture="environment">
+    </label>
+
+
+    <button type="submit" [disabled]="!ingredientForm.valid">Submit</button>
+</form>

@@ -49,6 +49,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.5.1",
+    "lite-server": "^2.5.4",
     "ng-openapi-gen": "^0.7.2",
     "protractor": "~5.4.0",
     "ts-loader": "^5.2.0",
