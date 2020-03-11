@@ -88,15 +88,13 @@ export class IngredientNewComponent implements OnInit {
   }
 
   protected imageUploaded( files: FileList ): void {
-    console.log( files.item(0) )
-
     const image = new IngredientImage( files.item(0) )
 
     this.imageService.uploadImage({
       body: image
     })
       .subscribe(( response ) => {
-        console.log( response )
+        
       })
   }
 

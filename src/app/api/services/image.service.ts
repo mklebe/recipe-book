@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 import { FileUploadDto } from '../models/file-upload-dto';
+import { NestImage } from '../models/nest-image';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class ImageService extends BaseService {
   /**
    * Path part for operation uploadImage
    */
-  static readonly UploadImagePath = '/image/upload';
+  static readonly UploadImagePath = '/image/upload/recipe';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -39,7 +40,7 @@ export class ImageService extends BaseService {
    * Recipe image
    */
   body: FileUploadDto
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<NestImage>> {
 
     const rb = new RequestBuilder(this.rootUrl, ImageService.UploadImagePath, 'post');
     if (params) {
@@ -48,12 +49,12 @@ export class ImageService extends BaseService {
       rb.body(params.body, 'multipart/form-data');
     }
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return r as StrictHttpResponse<NestImage>;
       })
     );
   }
@@ -71,10 +72,10 @@ export class ImageService extends BaseService {
    * Recipe image
    */
   body: FileUploadDto
-  }): Observable<void> {
+  }): Observable<NestImage> {
 
     return this.uploadImage$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<NestImage>) => r.body as NestImage)
     );
   }
 

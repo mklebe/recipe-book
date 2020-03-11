@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IngredientService, RecipeService } from 'src/app/api/services';
-import { Ingredient } from 'src/app/api/models';
+import { IngredientService, RecipeService, ImageService } from 'src/app/api/services';
+import { Ingredient, FileUploadDto, NestImage } from 'src/app/api/models';
 import { Recipe } from 'src/app/api/models'
 
 @Component({
@@ -12,12 +12,15 @@ export class RecipeNewComponent implements OnInit {
   protected foundIngredients: Ingredient[]
   protected usedIngredients: Ingredient[]
 
+  protected recipeImageUrl: string = ''
+
   protected recipeName: string
   protected currentIngredient: string
 
   constructor(
     private recipeService: RecipeService,
-    private ingredientService: IngredientService
+    private ingredientService: IngredientService,
+    private imageService: ImageService
   ) {
     this.recipeName = ""
     this.currentIngredient = ""
@@ -44,6 +47,20 @@ export class RecipeNewComponent implements OnInit {
     }
   }
 
+  protected imageUploaded( files: FileList ) {
+    const image = new RecipeImage( files.item(0) )
+
+    console.log('### Uploads Image ###')
+
+    this.imageService.uploadImage({
+      body: image
+    }).subscribe(( imageUrl ) => {
+      console.log('###Image Uploaded###')
+      console.log( imageUrl )
+      this.recipeImageUrl = imageUrl.src
+    })
+  }
+
   protected addRecipe(): void {
     const recipe = new CreateRecipeDto(
         this.recipeName, 
@@ -54,6 +71,10 @@ export class RecipeNewComponent implements OnInit {
         window.console.log( recipe )
       })
   }
+}
+
+class Serverimage implements NestImage {
+  src: string
 }
 
 class CreateRecipeDto implements Recipe {
@@ -72,6 +93,11 @@ class CreateRecipeDto implements Recipe {
     this.ingredients = ingredients
     this.hits = 0
   }
+}
 
-
+class RecipeImage implements FileUploadDto {
+  file: Blob;
+  constructor( file: Blob ) {
+    this.file = file
+  }
 }

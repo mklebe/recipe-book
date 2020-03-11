@@ -10,6 +10,11 @@
             <label for="zutat1">Zutat 1</label>
             <input [(ngModel)]="currentIngredient" type="text" (keyup)="findIngredientByQuery()">
         </div>
+
+        <label>
+            Take a picture
+            <input (change)="imageUploaded($event.target.files)" type="file" accept="image/*" capture="environment">
+        </label>
         
         <div class="form-row">
             <button mat-button (click)="addRecipe()">hinzufügen</button>
@@ -29,6 +34,10 @@
 
     </div>
     <div class="recipe__view">
+
+        <div *ngIf="recipeImageUrl">
+            <img src='http://localhost:3000/{{recipeImageUrl}}' alt="Fooo">
+        </div>
         <div *ngIf="usedIngredients.length > 0">
             <h2>{{recipeName}}</h2>
             <ul>

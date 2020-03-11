@@ -31,6 +31,10 @@
                     "file"
                 ]
             },
+            "NestImage": {
+                "type": "object",
+                "properties": {}
+            },
             "Diet": {
                 "type": "object",
                 "properties": {
@@ -149,18 +153,7 @@
         }
     },
     "paths": {
-        "/": {
-            "get": {
-                "operationId": "AppController_getHello",
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/image/upload": {
+        "/image/upload/recipe": {
             "post": {
                 "operationId": "uploadImage",
                 "summary": "",
@@ -178,7 +171,14 @@
                 },
                 "responses": {
                     "201": {
-                        "description": ""
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NestImage"
+                                }
+                            }
+                        }
                     }
                 },
                 "tags": [
