@@ -22,7 +22,7 @@
     <div class="form-row">
         <select formControlName="diet">
             <option value="" disabled>Please chose diet</option>
-            <option *ngFor="let diet of diets" [ngValue]="diet">{{ diet }}</option>
+            <option *ngFor="let diet of diets" [ngValue]="diet">{{ diet.name }}</option>
         </select>
     </div>
 

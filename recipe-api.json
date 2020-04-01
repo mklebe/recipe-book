@@ -33,17 +33,20 @@
             },
             "NestImage": {
                 "type": "object",
-                "properties": {}
+                "properties": {
+                    "src": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "src"
+                ]
             },
             "Diet": {
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "enum": [
-                            "Vegan",
-                            "Vegetarian"
-                        ]
+                        "type": "string"
                     }
                 },
                 "required": [
@@ -54,21 +57,7 @@
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "enum": [
-                            "January",
-                            "February",
-                            "March",
-                            "April",
-                            "May",
-                            "June",
-                            "July",
-                            "August",
-                            "September",
-                            "October",
-                            "November",
-                            "December"
-                        ]
+                        "type": "string"
                     }
                 },
                 "required": [

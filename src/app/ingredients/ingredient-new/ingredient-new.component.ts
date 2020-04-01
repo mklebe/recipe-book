@@ -31,9 +31,9 @@ export class IngredientNewComponent implements OnInit {
   ]
 
   protected diets = [
-    'Vegan',
-    'Vegetarian',
-    'Omnivore'
+    {id: 1, name: 'Vegan'},
+    {id: 2, name: 'Vegetarian'},
+    {id: 3, name: 'Omnivore'}
   ]
 
   protected ingredientList: Ingredient[] = []
@@ -105,7 +105,10 @@ export class IngredientNewComponent implements OnInit {
           return false
         }
         else {
-          return this.availableMonths[i].name
+          return {
+            id: i,
+            name: this.availableMonths[i].name
+          }
         }
       })
       .filter(value => value)
@@ -117,6 +120,14 @@ class IngredientImage implements FileUploadDto {
   constructor( file: Blob ) {
     this.file = file
   }
+}
+
+class SeasonDto implements Season {
+  name: string;
+}
+
+class DietDto implements Diet {
+  name: string;  
 }
 
 class CreateIngredientDto implements Ingredient {
