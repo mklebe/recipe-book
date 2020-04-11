@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IngredientService, ImageService } from 'src/app/api/services'
-import {Ingredient, Diet, Season, FileUploadDto} from 'src/app/api/models'
+import {Ingredient, Season, FileUploadDto} from 'src/app/api/models'
 import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl, Validators } from '@angular/forms';
+import { CreateIngredientDto } from 'src/app/recipes/shared/CreateIngredientDto';
 
 @Component({
   selector: 'app-ingredient-new',
@@ -10,8 +11,11 @@ import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl, Valida
 })
 export class IngredientNewComponent implements OnInit {
 
-  protected ingredientImage: File = null
+  protected ingredientImage: string = ''
 
+  protected currentIngredient: CreateIngredientDto
+
+  protected isAdded: boolean
   protected name: string
   protected description: string
   protected ingredientForm: FormGroup
@@ -43,7 +47,9 @@ export class IngredientNewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private imageService: ImageService
   ) {
+    this.isAdded = false
     this.ingredientForm = this._createFormGroup()
+    this.currentIngredient = new CreateIngredientDto()
   }
 
   private _createFormGroup(): FormGroup {
@@ -62,11 +68,12 @@ export class IngredientNewComponent implements OnInit {
 
   ngOnInit() {}
 
-  private addIngredient(ingredient: CreateIngredientDto): void {
-    this.ingredientService.create( {body: ingredient} )
-      .subscribe( (response) => {
+  private addIngredient(): void {
+    this.ingredientService.create( {body: this.currentIngredient} )
+      .subscribe( () => {
         this.name = ''
         this.description = ''
+        this.isAdded = true
       })
   }
 
@@ -77,14 +84,11 @@ export class IngredientNewComponent implements OnInit {
 
     const season: Season[] = this.cleanSeason()
 
-    const ingredient = new CreateIngredientDto(
-      temp.name,
-      temp.description,
-      season,
-      [temp.diet]
-    )
+    this.currentIngredient.withName(temp.name)
+      .withDescription(temp.description).withSeason(season)
+      .withDiet([temp.diet])
 
-    this.addIngredient( ingredient )
+    this.addIngredient( )
   }
 
   protected imageUploaded( files: FileList ): void {
@@ -92,10 +96,12 @@ export class IngredientNewComponent implements OnInit {
 
     this.imageService.uploadImage({
       body: image
+    }).subscribe(( response ) => {
+      console.log( response )
+      this.ingredientImage = response.url
+      console.log( response )
+      this.currentIngredient.withImage(response.url)
     })
-      .subscribe(( response ) => {
-        
-      })
   }
 
   private cleanSeason(): Season[] {
@@ -119,33 +125,5 @@ class IngredientImage implements FileUploadDto {
   file: Blob;
   constructor( file: Blob ) {
     this.file = file
-  }
-}
-
-class SeasonDto implements Season {
-  name: string;
-}
-
-class DietDto implements Diet {
-  name: string;  
-}
-
-class CreateIngredientDto implements Ingredient {
-  description: string
-  diets: Diet[];
-  hits: number;
-  id: number;
-  name: string;
-  seasons: Season[];
-  slug: string;
-
-  constructor( name: string, description: string, season: Season[], diet: Diet[] ) {
-    this.name = name
-    this.description = description
-    this.hits = 0
-    this.id = null
-    this.slug = null
-    this.seasons = season
-    this.diets = diet
   }
 }

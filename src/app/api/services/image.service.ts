@@ -8,8 +8,8 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { CloudinaryImage } from '../models/cloudinary-image';
 import { FileUploadDto } from '../models/file-upload-dto';
-import { NestImage } from '../models/nest-image';
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +40,7 @@ export class ImageService extends BaseService {
    * Recipe image
    */
   body: FileUploadDto
-  }): Observable<StrictHttpResponse<NestImage>> {
+  }): Observable<StrictHttpResponse<CloudinaryImage>> {
 
     const rb = new RequestBuilder(this.rootUrl, ImageService.UploadImagePath, 'post');
     if (params) {
@@ -54,7 +54,7 @@ export class ImageService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<NestImage>;
+        return r as StrictHttpResponse<CloudinaryImage>;
       })
     );
   }
@@ -72,10 +72,10 @@ export class ImageService extends BaseService {
    * Recipe image
    */
   body: FileUploadDto
-  }): Observable<NestImage> {
+  }): Observable<CloudinaryImage> {
 
     return this.uploadImage$Response(params).pipe(
-      map((r: StrictHttpResponse<NestImage>) => r.body as NestImage)
+      map((r: StrictHttpResponse<CloudinaryImage>) => r.body as CloudinaryImage)
     );
   }
 

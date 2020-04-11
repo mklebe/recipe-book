@@ -38,7 +38,7 @@ import { ApiModule } from './api/api.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ApiModule.forRoot({rootUrl: 'https://secure-springs-20788.herokuapp.com'}),
+    ApiModule.forRoot({rootUrl: 'http://localhost:3000'}),
     ReactiveFormsModule
   ],
   providers: [],

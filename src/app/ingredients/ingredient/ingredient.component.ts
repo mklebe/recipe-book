@@ -25,8 +25,8 @@ export class IngredientComponent implements OnInit {
         .subscribe(( ingredient ) => {
           this.ingredient = ingredient
           this.ingredientService.incrementIngredientHits({body: ingredient})
-            .subscribe( ingredient => {
-              window.console.log( ingredient )
+          .subscribe( ingredient => {
+            window.console.log( ingredient )
             })
         })
     })

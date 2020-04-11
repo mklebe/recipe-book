@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IngredientService, RecipeService, ImageService } from 'src/app/api/services';
-import { Ingredient, FileUploadDto, NestImage } from 'src/app/api/models';
+import { Ingredient, FileUploadDto, CloudinaryImage } from 'src/app/api/models';
 import { Recipe } from 'src/app/api/models'
 
 @Component({
@@ -57,7 +57,7 @@ export class RecipeNewComponent implements OnInit {
     }).subscribe(( imageUrl ) => {
       console.log('###Image Uploaded###')
       console.log( imageUrl )
-      this.recipeImageUrl = imageUrl.src
+      this.recipeImageUrl = imageUrl.url
     })
   }
 
@@ -71,10 +71,6 @@ export class RecipeNewComponent implements OnInit {
         window.console.log( recipe )
       })
   }
-}
-
-class Serverimage implements NestImage {
-  src: string
 }
 
 class CreateRecipeDto implements Recipe {

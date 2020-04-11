@@ -1,4 +1,7 @@
 <div *ngIf="ingredient">
     <h1>{{ingredient.name}}</h1>
     <p>{{ingredient.description}}</p>
+    <ul>
+        <li *ngFor="let season of ingredient.seasons">{{season.name}}</li>
+    </ul>
 </div>

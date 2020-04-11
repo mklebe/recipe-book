@@ -6,6 +6,7 @@ export interface Ingredient {
   diets: Array<Diet>;
   hits: number;
   id: number;
+  image: string;
   name: string;
   seasons: Array<Season>;
   slug: string;

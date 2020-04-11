@@ -1,3 +1,7 @@
+<div *ngIf="isAdded">
+    <h1>Zutat ist hinzugefügt</h1>
+</div>
+
 <form [formGroup]="ingredientForm"  (ngSubmit)="submit()">
     <div class="form-row">
         <label>
@@ -34,3 +38,7 @@
 
     <button type="submit" [disabled]="!ingredientForm.valid">Submit</button>
 </form>
+
+<div *ngIf="currentIngredient.image">
+    <img src="{{currentIngredient.image}}" alt="">
+</div>

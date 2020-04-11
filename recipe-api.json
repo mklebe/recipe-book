@@ -31,15 +31,23 @@
                     "file"
                 ]
             },
-            "NestImage": {
+            "CloudinaryImage": {
                 "type": "object",
                 "properties": {
-                    "src": {
+                    "url": {
                         "type": "string"
+                    },
+                    "height": {
+                        "type": "number"
+                    },
+                    "width": {
+                        "type": "number"
                     }
                 },
                 "required": [
-                    "src"
+                    "url",
+                    "height",
+                    "width"
                 ]
             },
             "Diet": {
@@ -79,6 +87,9 @@
                     "description": {
                         "type": "string"
                     },
+                    "image": {
+                        "type": "string"
+                    },
                     "diets": {
                         "type": "array",
                         "items": {
@@ -100,6 +111,7 @@
                     "name",
                     "slug",
                     "description",
+                    "image",
                     "diets",
                     "seasons",
                     "hits"
@@ -164,7 +176,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/NestImage"
+                                    "$ref": "#/components/schemas/CloudinaryImage"
                                 }
                             }
                         }
