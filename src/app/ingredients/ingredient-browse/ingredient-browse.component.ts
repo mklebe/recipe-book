@@ -3,11 +3,11 @@ import { Ingredient } from 'src/app/api/models';
 import { IngredientService } from 'src/app/api/services';
 
 @Component({
-  selector: 'app-ingredient-list',
-  templateUrl: './ingredient-list.component.html',
-  styleUrls: ['./ingredient-list.component.styl']
+  selector: 'app-ingredient-browse',
+  templateUrl: './ingredient-browse.component.html',
+  styleUrls: ['./ingredient-browse.component.styl']
 })
-export class IngredientListComponent implements OnInit {
+export class IngredientBrowseComponent implements OnInit {
   protected ingredientList: Ingredient[]
 
   constructor(

@@ -22,7 +22,7 @@ export class CreateIngredientDto implements Ingredient {
       return this
     }
   
-    withDescription( description: string ): CreateIngredientDto {
+    withDescription(description: string): CreateIngredientDto {
       this.description = description
       return this
     }

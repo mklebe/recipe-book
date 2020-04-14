@@ -5,11 +5,11 @@ import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl, Valida
 import { CreateIngredientDto } from 'src/app/recipes/shared/CreateIngredientDto';
 
 @Component({
-  selector: 'app-ingredient-new',
-  templateUrl: './ingredient-new.component.html',
-  styleUrls: ['./ingredient-new.component.styl']
+  selector: 'app-ingredient-create',
+  templateUrl: './ingredient-create.component.html',
+  styleUrls: ['./ingredient-create.component.styl']
 })
-export class IngredientNewComponent implements OnInit {
+export class IngredientCreateComponent implements OnInit {
 
   protected ingredientImage: string = ''
 

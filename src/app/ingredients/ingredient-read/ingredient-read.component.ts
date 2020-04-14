@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Ingredient, Season } from 'src/app/api/models';
+import { Ingredient } from 'src/app/api/models';
 import { IngredientService } from 'src/app/api/services';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-ingredient',
-  templateUrl: './ingredient.component.html',
-  styleUrls: ['./ingredient.component.styl']
+  selector: 'app-ingredient-read',
+  templateUrl: './ingredient-read.component.html',
+  styleUrls: ['./ingredient-read.component.styl']
 })
-export class IngredientComponent implements OnInit {
+export class IngredientReadComponent implements OnInit {
   protected ingredient: Ingredient
 
   constructor(
