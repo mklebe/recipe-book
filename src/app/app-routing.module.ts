@@ -16,12 +16,12 @@ import { IngredientBrowseComponent } from './ingredient/ingredient-browse/ingred
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'recipe/create', component: RecipeCreateComponent},
+  {path: 'recipe/browse', component: RecipeBrowseComponent},
   {path: 'recipe/:id', component: RecipeReadComponent},
-  {path: 'recipe/add', component: RecipeCreateComponent},
-  {path: 'recipe/list', component: RecipeBrowseComponent},
 
-  {path: 'ingredient/new', component: IngredientCreateComponent},
-  {path: 'ingredient/list', component: IngredientBrowseComponent},
+  {path: 'ingredient/create', component: IngredientCreateComponent},
+  {path: 'ingredient/browse', component: IngredientBrowseComponent},
   {path: 'ingredient/:id', component: IngredientReadComponent},
 ]
 
