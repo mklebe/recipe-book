@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IngredientService, ImageService } from 'src/app/api/services'
 import {Ingredient, Season, FileUploadDto} from 'src/app/api/models'
 import { FormGroup, FormBuilder, FormArray, FormControl, AbstractControl, Validators } from '@angular/forms';
-import { CreateIngredientDto } from 'src/app/recipes/shared/CreateIngredientDto';
+import { CreateIngredientDto } from 'src/app/recipe/shared/CreateIngredientDto';
 
 @Component({
   selector: 'app-ingredient-create',

@@ -5,11 +5,11 @@ import { RecipeService } from 'src/app/api/services';
 
 
 @Component({
-  selector: 'app-recipe',
-  templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.styl']
+  selector: 'app-recipe-read',
+  templateUrl: './recipe-read.component.html',
+  styleUrls: ['./recipe-read.component.styl']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeReadComponent implements OnInit {
 
   protected recipe: Recipe
 

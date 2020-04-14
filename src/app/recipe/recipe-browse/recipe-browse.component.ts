@@ -4,11 +4,11 @@ import { Recipe } from 'src/app/api/models';
 
 
 @Component({
-  selector: 'app-recipe-list',
-  templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.styl']
+  selector: 'app-recipe-browse',
+  templateUrl: './recipe-browse.component.html',
+  styleUrls: ['./recipe-browse.component.styl']
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeBrowseComponent implements OnInit {
 
   protected recipeList: Recipe[]
 

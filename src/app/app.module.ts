@@ -4,17 +4,17 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
+import { RecipeCreateComponent } from './recipe/recipe-create/recipe-create.component';
+import { RecipeBrowseComponent } from './recipe/recipe-browse/recipe-browse.component';
 import { NotificationComponent } from './notification/notification.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { RecipeTileComponent } from './recipes/shared/recipe-tile.component';
+import { RecipeTileComponent } from './recipe/shared/recipe-tile.component';
 import { IngredientReadComponent } from './ingredient/ingredient-read/ingredient-read.component';
 import { IngredientCreateComponent } from './ingredient/ingredient-create/ingredient-create.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { IngredientBrowseComponent } from './ingredient/ingredient-browse/ingredient-browse.component';
-import { RecipeComponent } from './recipes/recipe/recipe.component';
+import { RecipeReadComponent } from './recipe/recipe-read/recipe-read.component';
 import { ApiModule } from './api/api.module';
 import { IngredientUpdateComponent } from './ingredient/ingredient-update/ingredient-update.component';
 
@@ -25,9 +25,9 @@ import { IngredientUpdateComponent } from './ingredient/ingredient-update/ingred
     HeaderComponent,
     HomeComponent,
 
-    RecipeComponent,
-    RecipeNewComponent,
-    RecipeListComponent,
+    RecipeReadComponent,
+    RecipeCreateComponent,
+    RecipeBrowseComponent,
     RecipeTileComponent,
 
     IngredientReadComponent,

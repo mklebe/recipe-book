@@ -4,11 +4,11 @@ import { Ingredient, FileUploadDto, CloudinaryImage } from 'src/app/api/models';
 import { Recipe } from 'src/app/api/models'
 
 @Component({
-  selector: 'app-recipe-new',
-  templateUrl: './recipe-new.component.html',
-  styleUrls: ['./recipe-new.component.css']
+  selector: 'app-recipe-create',
+  templateUrl: './recipe-create.component.html',
+  styleUrls: ['./recipe-create.component.css']
 })
-export class RecipeNewComponent implements OnInit {
+export class RecipeCreateComponent implements OnInit {
   protected foundIngredients: Ingredient[]
   protected usedIngredients: Ingredient[]
 
