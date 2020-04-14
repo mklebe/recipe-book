@@ -4,9 +4,9 @@ import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { HomeComponent } from './home/home.component';
 
-import { IngredientCreateComponent } from './ingredients/ingredient-create/ingredient-create.component';
-import { IngredientReadComponent } from './ingredients/ingredient-read/ingredient-read.component';
-import { IngredientBrowseComponent } from './ingredients/ingredient-browse/ingredient-browse.component';
+import { IngredientCreateComponent } from './ingredient/ingredient-create/ingredient-create.component';
+import { IngredientReadComponent } from './ingredient/ingredient-read/ingredient-read.component';
+import { IngredientBrowseComponent } from './ingredient/ingredient-browse/ingredient-browse.component';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
 
 

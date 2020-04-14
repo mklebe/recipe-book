@@ -10,13 +10,13 @@ import { NotificationComponent } from './notification/notification.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RecipeTileComponent } from './recipes/shared/recipe-tile.component';
-import { IngredientReadComponent } from './ingredients/ingredient-read/ingredient-read.component';
-import { IngredientCreateComponent } from './ingredients/ingredient-create/ingredient-create.component';
+import { IngredientReadComponent } from './ingredient/ingredient-read/ingredient-read.component';
+import { IngredientCreateComponent } from './ingredient/ingredient-create/ingredient-create.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { IngredientBrowseComponent } from './ingredients/ingredient-browse/ingredient-browse.component';
+import { IngredientBrowseComponent } from './ingredient/ingredient-browse/ingredient-browse.component';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { ApiModule } from './api/api.module';
-import { IngredientUpdateComponent } from './ingredients/ingredient-update/ingredient-update.component';
+import { IngredientUpdateComponent } from './ingredient/ingredient-update/ingredient-update.component';
 
 @NgModule({
   declarations: [
