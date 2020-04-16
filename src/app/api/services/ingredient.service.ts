@@ -169,55 +169,6 @@ export class IngredientService extends BaseService {
   }
 
   /**
-   * Path part for operation findIngredient
-   */
-  static readonly FindIngredientPath = '/ingredient/search';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `findIngredient()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  findIngredient$Response(params: {
-    term: string;
-
-  }): Observable<StrictHttpResponse<Array<Ingredient>>> {
-
-    const rb = new RequestBuilder(this.rootUrl, IngredientService.FindIngredientPath, 'get');
-    if (params) {
-
-      rb.query('term', params.term);
-
-    }
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<Ingredient>>;
-      })
-    );
-  }
-
-  /**
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `findIngredient$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  findIngredient(params: {
-    term: string;
-
-  }): Observable<Array<Ingredient>> {
-
-    return this.findIngredient$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<Ingredient>>) => r.body as Array<Ingredient>)
-    );
-  }
-
-  /**
    * Path part for operation find
    */
   static readonly FindPath = '/ingredient/{id}';
@@ -263,6 +214,104 @@ export class IngredientService extends BaseService {
 
     return this.find$Response(params).pipe(
       map((r: StrictHttpResponse<Ingredient>) => r.body as Ingredient)
+    );
+  }
+
+  /**
+   * Path part for operation update
+   */
+  static readonly UpdatePath = '/ingredient/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `update()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  update$Response(params: {
+
+    body: Ingredient
+  }): Observable<StrictHttpResponse<Ingredient>> {
+
+    const rb = new RequestBuilder(this.rootUrl, IngredientService.UpdatePath, 'put');
+    if (params) {
+
+
+      rb.body(params.body, 'application/json');
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Ingredient>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `update$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  update(params: {
+
+    body: Ingredient
+  }): Observable<Ingredient> {
+
+    return this.update$Response(params).pipe(
+      map((r: StrictHttpResponse<Ingredient>) => r.body as Ingredient)
+    );
+  }
+
+  /**
+   * Path part for operation findIngredient
+   */
+  static readonly FindIngredientPath = '/ingredient/search';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `findIngredient()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findIngredient$Response(params: {
+    term: string;
+
+  }): Observable<StrictHttpResponse<Array<Ingredient>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, IngredientService.FindIngredientPath, 'get');
+    if (params) {
+
+      rb.query('term', params.term);
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Ingredient>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `findIngredient$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  findIngredient(params: {
+    term: string;
+
+  }): Observable<Array<Ingredient>> {
+
+    return this.findIngredient$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Ingredient>>) => r.body as Array<Ingredient>)
     );
   }
 

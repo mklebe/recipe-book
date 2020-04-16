@@ -446,6 +446,67 @@
                 ]
             }
         },
+        "/ingredient/{id}": {
+            "put": {
+                "operationId": "update",
+                "summary": "",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingredient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingredient"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            },
+            "get": {
+                "operationId": "find",
+                "summary": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingredient"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ingredient"
+                ]
+            }
+        },
         "/ingredient/search": {
             "get": {
                 "operationId": "findIngredient",
@@ -470,37 +531,6 @@
                                     "items": {
                                         "$ref": "#/components/schemas/Ingredient"
                                     }
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "ingredient"
-                ]
-            }
-        },
-        "/ingredient/{id}": {
-            "get": {
-                "operationId": "find",
-                "summary": "",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "required": true,
-                        "in": "path",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Ingredient"
                                 }
                             }
                         }

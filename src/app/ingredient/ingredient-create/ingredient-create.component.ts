@@ -97,9 +97,7 @@ export class IngredientCreateComponent implements OnInit {
     this.imageService.uploadImage({
       body: image
     }).subscribe(( response ) => {
-      console.log( response )
       this.ingredientImage = response.url
-      console.log( response )
       this.currentIngredient.withImage(response.url)
     })
   }
